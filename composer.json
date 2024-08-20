@@ -1,0 +1,23 @@
+{
+    "name": "tarikul/task3",
+    "description": "Sample task for Thrive cart",
+    "type": "sample-task",
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+    },
+    "authors": [
+        {
+            "name": "Tarikul Islam",
+            "email": "islm90@gmail.com"
+        }
+    ]
+}
