@@ -47,8 +47,9 @@ class Basket {
                 break;
             }
         }
-
-        return round($subtotal + $deliveryCost, 2);
+        // total to 2 decimal places without considring rounding
+        $total = ($subtotal + $deliveryCost)*100;
+        return (int) $total / 100;
     }
 
 }
