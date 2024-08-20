@@ -28,11 +28,21 @@ class Basket {
             $productCounts[$code]++;
             $subtotal += $this->products[$code];
         }
+        
+        // Apply offers over subtotal price
+        foreach ($productCounts as $code => $count) {
+            if (isset($this->offers[$code])) {
+                $offer = $this->offers[$code];
+                if ($offer['type'] == 'B1G1_half_off' && $count >= 2) {
+                    $subtotal -= $this->products[$code] * 0.5 * floor($count / 2);
+                }
+            }
+        }
 
         // Determine delivery cost
         $deliveryCost = 0;
         foreach ($this->deliveryRules as $rule) {
-            if ($subtotal < $rule['limit']) {
+            if ($subtotal < $rule['threshold']) {
                 $deliveryCost = $rule['cost'];
                 break;
             }
