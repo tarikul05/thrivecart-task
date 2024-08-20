@@ -14,11 +14,17 @@ class Basket {
         $this->basket = [];
     }
 
-    public function add($productCode) {
+    public function add(string $productCode): void
+    {
         $this->basket[] = $productCode;
     }
+    public function getBasket(): array
+    {
+        return $this->basket;
+    }
 
-    public function total() {
+    public function total(): float
+    {
         $subtotal = 0;
         $productCounts = [];
 
@@ -30,6 +36,8 @@ class Basket {
             $productCounts[$code]++;
             $subtotal += $this->products[$code];
         }
+
+        if (count($productCounts )== 0) return 0;
         
         // Apply offers over subtotal price
         foreach ($productCounts as $code => $count) {
