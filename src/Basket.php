@@ -52,3 +52,28 @@ class Basket {
     }
 
 }
+
+
+// Define products
+$products = [
+    'R01' => 32.95,
+    'G01' => 24.95,
+    'B01' => 7.95
+];
+
+// Define delivery charge rules
+$deliveryRules = [
+    ['threshold' => 50, 'cost' => 4.95],
+    ['threshold' => 90, 'cost' => 2.95],
+    ['threshold' => PHP_INT_MAX, 'cost' => 0.00]
+];
+
+// Define offers
+$offers = [
+    'R01' => ['type' => 'B1G1_half_off'],
+];
+
+// Initialize the basket
+$basket = new Basket($products, $deliveryRules, $offers);
+
+?>
