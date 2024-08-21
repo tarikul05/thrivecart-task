@@ -1,28 +1,60 @@
 <?php
 namespace App;
 
-class Basket {
-    private $products;
-    private $deliveryRules;
-    private $offers;
-    private $basket;
+/**
+ * Basket class
+ * 
+ * This class is responsible for managing the basket of products.
+ * It allows adding products to the basket and calculating the total price.
+ * 
+ * @package App
+ */
 
-    public function __construct($products, $deliveryRules, $offers) {
+class Basket {
+    private array $products;
+    private array $deliveryRules;
+    private array $offers;
+    private array $basket;
+
+    /**
+     * @param array $products
+     * @param array $deliveryRules
+     * @param array $offers
+     * @return void
+     */
+
+    public function __construct( $products, $deliveryRules, $offers) 
+    {
         $this->products = $products;
         $this->deliveryRules = $deliveryRules;
         $this->offers = $offers;
         $this->basket = [];
     }
 
+    /**
+     * @param string $productCode
+     * @return void
+     */
+
     public function add(string $productCode): void
     {
         $this->basket[] = $productCode;
     }
+
+
+    /**
+     * @return array<array>
+     */
     public function getBasket(): array
     {
         return $this->basket;
     }
 
+    
+    /**
+     * calculate the total price of the basket considering the offers and delivery rules
+     * @return float
+     */
     public function total(): float
     {
         $subtotal = 0;
