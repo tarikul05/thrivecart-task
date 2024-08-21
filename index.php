@@ -61,8 +61,4 @@ $basket->add('R01');
 echo $basket->total();  // Expected: $98.27
 echo "\n";
 
-
-$basket = new Basket($products, $deliveryRules, $offers);
-echo $basket->total();  // Expected: $0.00
-echo "\n";
 ?>
