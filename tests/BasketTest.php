@@ -22,7 +22,7 @@ class BasketTest extends TestCase
         'R01' => ['type' => 'B1G1_half_off'],
     ];
 
-    public function testTotalValidateFromSample()
+    public function testTotalValidateFromGivenSample()
     {
         
 
@@ -143,5 +143,20 @@ class BasketTest extends TestCase
         $basket = new Basket([], [], []);
         $this->assertEquals(0, $basket->total());
     }
+
+    public function testTotalWithNoOfferAndNoDeliveryRuleAndNoProductAndAddProduct()
+    {
+        $basket = new Basket([], [], []);
+        $basket->add('B01');
+        $this->assertEquals(0, $basket->total());
+    }
+
+    // test case for constructor
+    public function testConstructor()
+    {
+        $basket = new Basket($this->products, $this->deliveryRules, $this->offers);
+        $this->assertInstanceOf(Basket::class, $basket);
+    }
+
 }
 ?>
